@@ -1,0 +1,485 @@
+2025-05-08 15:49:12,264 - INFO - User input: cars 테이블의 column에 대해서 설명해줘.
+2025-05-08 15:49:12,277 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:49:13,558 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:49:13,560 - INFO - AFC remote call 1 is done.
+2025-05-08 15:49:13,560 - WARNING - No function call found in the response.
+2025-05-08 15:49:21,947 - INFO - User input: 내 DB에서 가장 싼 자동차는 뭐야?
+2025-05-08 15:49:21,960 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:49:22,993 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:49:22,993 - INFO - AFC remote call 1 is done.
+2025-05-08 15:49:22,993 - WARNING - No function call found in the response.
+2025-05-08 15:50:14,577 - INFO - User input: 내 DB에서 가장 싼 자동차는 뭐야?
+2025-05-08 15:50:14,577 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:15,422 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:15,422 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:15,422 - INFO - Function call: id=None args={'sql': 'SELECT * FROM cars ORDER BY price ASC LIMIT 1;'} name='mysql_query'
+2025-05-08 15:50:15,469 - INFO - Tool output: [
+  {
+    "model_id": 3487,
+    "name": "동풍 C31",
+    "brand": "동풍",
+    "car_type": "소형트럭",
+    "fuel_type": null,
+    "release_date": "2017.05.",
+    "price": 1250,
+    "image_url": "https://autoimg.danawa.com/photo/3487/model_200.png",
+    "detail_url": "https://auto.danawa.com/newcar/?Work=estimate&Brand=617&Model=3487"
+  }
+]
+2025-05-08 15:50:15,469 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:17,113 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:17,113 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:17,115 - INFO - Final response: 제공된 정보는 동풍 C31 모델에 대한 것입니다. 요약하면 다음과 같습니다:
+
+*   **모델명:** 동풍 C31
+*   **브랜드:** 동풍
+*   **차종:** 소형트럭
+*   **출시일:** 2017년 5월
+*   **가격:** 1250만원
+*   **이미지 URL:** [https://autoimg.danawa.com/photo/3487/model_200.png](https://autoimg.danawa.com/photo/3487/model_200.png)
+*   **상세 정보 URL:** [https://auto.danawa.com/newcar/?Work=estimate&Brand=617&Model=3487](https://auto.danawa.com/newcar/?Work=estimate&Brand=617&Model=3487)
+2025-05-08 15:50:20,768 - INFO - User input: 가장 비싼 자동차는 뭐야?
+2025-05-08 15:50:20,768 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:21,427 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:21,427 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:21,427 - INFO - Function call: id=None args={'sql': 'SELECT model, MAX(price) FROM cars'} name='mysql_query'
+2025-05-08 15:50:21,438 - ERROR - Error during function call: Unknown column 'model' in 'field list'
+2025-05-08 15:50:21,442 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:22,119 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:22,123 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:22,123 - INFO - Tool output:  쿼리 오류가 발생했습니다. 테이블에 열 이름이 있는지 확인하고 다시 시도해 주세요.
+
+2025-05-08 15:50:22,123 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:22,972 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:22,987 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:22,987 - INFO - Final response: 죄송합니다. 현재 데이터베이스에 오류가 있어 답변을 드릴 수 없습니다. 오류 메시지는 "Error: Unknown column 'model' in 'field list'"이며, 이는 쿼리에서 'model'이라는 열을 찾을 수 없다는 의미입니다. 데이터베이스 구조를 확인하고 쿼리를 수정해야 합니다.
+
+2025-05-08 15:50:32,572 - INFO - User input: cars 테이블의 column에 대해서 설명해줘.
+2025-05-08 15:50:32,572 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:33,412 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:33,412 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:33,412 - INFO - Function call: id=None args={'sql': 'DESCRIBE cars;'} name='mysql_query'
+2025-05-08 15:50:33,423 - INFO - Tool output: [
+  {
+    "Field": "model_id",
+    "Type": "int",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "name",
+    "Type": "varchar(100)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "brand",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "car_type",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "fuel_type",
+    "Type": "varchar(100)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "release_date",
+    "Type": "varchar(20)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "price",
+    "Type": "int",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "image_url",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "detail_url",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  }
+]
+2025-05-08 15:50:33,423 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:35,055 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:35,055 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:35,055 - INFO - Final response: 제공해주신 정보에 따르면, 데이터베이스 테이블에 `model`이라는 이름의 열은 존재하지 않습니다. 쿼리에서 `model`이라는 열을 참조하고 있다면, 해당 열이 실제로 테이블에 존재하는지 확인해야 합니다. 
+
+만약 `model_id`를 의미하는 것이었다면, 쿼리에서 `model_id`를 사용해야 합니다.
+
+**요약:**
+
+*   **문제:** 쿼리에서 존재하지 않는 `model` 열을 참조하고 있습니다.
+*   **해결:**
+    *   테이블에 `model` 열이 있는지 확인합니다.
+    *   만약 `model_id`를 의미하는 것이라면, 쿼리에서 `model_id`를 사용합니다.
+    *   쿼리 오류를 수정하여 다시 시도합니다.
+
+2025-05-08 15:50:42,585 - INFO - User input: cars 테이블의 column에 대해서 설명해줘.
+2025-05-08 15:50:42,585 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:43,402 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:43,404 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:43,404 - INFO - Function call: id=None args={'sql': 'DESCRIBE cars;'} name='mysql_query'
+2025-05-08 15:50:43,412 - INFO - Tool output: [
+  {
+    "Field": "model_id",
+    "Type": "int",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "name",
+    "Type": "varchar(100)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "brand",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "car_type",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "fuel_type",
+    "Type": "varchar(100)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "release_date",
+    "Type": "varchar(20)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "price",
+    "Type": "int",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "image_url",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "detail_url",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  }
+]
+2025-05-08 15:50:43,412 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:45,412 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:45,412 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:45,412 - INFO - Final response: 죄송합니다. 앞선 응답에서 오류가 발생했습니다. "Error: Unknown column 'model' in 'field list'" 오류는 SQL 쿼리에서 'model'이라는 열을 찾을 수 없다는 의미입니다. 
+
+하지만 제공해주신 테이블 스키마 정보에는 'model'이라는 열이 없습니다. 'model_id'라는 열이 존재합니다.
+
+따라서, 데이터를 요청하실 때 'model' 대신 'model_id'를 사용해야 합니다.
+
+예를 들어, 특정 model_id를 가진 데이터를 요청하려면 다음과 같이 요청해야 합니다.
+
+```
+SELECT * FROM 테이블명 WHERE model_id = 특정_model_id;
+```
+
+만약 'name' 열을 기준으로 데이터를 찾고 싶다면 다음과 같이 요청할 수 있습니다.
+
+```
+SELECT * FROM 테이블명 WHERE name = '특정_이름';
+```
+
+어떤 데이터를 찾고 싶으신지 알려주시면 정확한 쿼리를 만들어 드리겠습니다.
+
+2025-05-08 15:50:56,804 - INFO - User input: 내 DB에서 가장 비싼 자동차는 뭐야?
+2025-05-08 15:50:56,820 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:57,574 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:57,587 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:57,587 - INFO - Function call: id=None args={'sql': 'SELECT * FROM cars ORDER BY price DESC LIMIT 1;'} name='mysql_query'
+2025-05-08 15:50:57,591 - INFO - Tool output: [
+  {
+    "model_id": 3807,
+    "name": "코닉세그 Jesko",
+    "brand": "코닉세그",
+    "car_type": "스포츠카",
+    "fuel_type": "가솔린",
+    "release_date": "2019.10.",
+    "price": 450000,
+    "image_url": "https://autoimg.danawa.com/photo/3807/model_200.png",
+    "detail_url": "https://auto.danawa.com/newcar/?Work=estimate&Brand=468&Model=3807"
+  }
+]
+2025-05-08 15:50:57,591 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:50:58,567 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:50:58,569 - INFO - AFC remote call 1 is done.
+2025-05-08 15:50:58,569 - INFO - Final response: 어떤 질문에 대한 답을 원하시나요? 이전 대화에서 특정 질문이 없었습니다. 만약 특정 질문이 있다면 다시 질문해주세요. 예를 들어, "코닉세그 Jesko의 가격은 얼마인가요?" 와 같이 구체적으로 질문해주시면 답변해 드릴 수 있습니다.
+
+2025-05-08 15:51:03,951 - INFO - User input: 내 DB에서 가장 싼 자동차는 뭐야?
+2025-05-08 15:51:03,951 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:51:05,486 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:51:05,486 - INFO - AFC remote call 1 is done.
+2025-05-08 15:51:05,486 - INFO - Function call: id=None args={'sql': 'SELECT * FROM cars ORDER BY price ASC LIMIT 1;'} name='mysql_query'
+2025-05-08 15:51:05,490 - INFO - Tool output: [
+  {
+    "model_id": 3487,
+    "name": "동풍 C31",
+    "brand": "동풍",
+    "car_type": "소형트럭",
+    "fuel_type": null,
+    "release_date": "2017.05.",
+    "price": 1250,
+    "image_url": "https://autoimg.danawa.com/photo/3487/model_200.png",
+    "detail_url": "https://auto.danawa.com/newcar/?Work=estimate&Brand=617&Model=3487"
+  }
+]
+2025-05-08 15:51:05,490 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:51:06,709 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:51:06,709 - INFO - AFC remote call 1 is done.
+2025-05-08 15:51:06,709 - INFO - Final response: 어떤 답을 원하시는지 명확하게 알려주시면 답변해 드릴 수 있습니다. 
+
+* **어떤 질문에 대한 답을 원하시나요?** (예: "가장 비싼 차는 무엇인가요?", "동풍 C31의 연료 타입은 무엇인가요?")
+* **어떤 정보에 대한 답을 원하시나요?** (예: "모델 ID가 3487인 차의 모든 정보", "스포츠카의 목록")
+
+질문을 명확하게 해주시면 정확한 답변을 드리겠습니다.
+
+2025-05-08 15:51:58,959 - INFO - User input: cars 테이블의 column에 대해서 설명해줘.
+2025-05-08 15:51:58,959 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:51:59,793 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:51:59,808 - INFO - AFC remote call 1 is done.
+2025-05-08 15:51:59,808 - INFO - Function call: id=None args={'sql': 'DESCRIBE cars;'} name='mysql_query'
+2025-05-08 15:51:59,831 - INFO - Tool output: [
+  {
+    "Field": "model_id",
+    "Type": "int",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "name",
+    "Type": "varchar(100)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "brand",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "car_type",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "fuel_type",
+    "Type": "varchar(100)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "release_date",
+    "Type": "varchar(20)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "price",
+    "Type": "int",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "image_url",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "detail_url",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  }
+]
+2025-05-08 15:51:59,831 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:52:03,078 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:52:03,103 - INFO - AFC remote call 1 is done.
+2025-05-08 15:52:03,103 - INFO - Final response: 제공해주신 정보는 데이터베이스 테이블의 스키마(구조)를 나타냅니다. 이 스키마는 '자동차 모델'에 대한 정보를 저장하는 테이블의 구조를 정의합니다.
+
+각 필드(열)에 대한 설명은 다음과 같습니다:
+
+*   **model\_id:** 자동차 모델의 고유 ID (정수, 기본 키)
+*   **name:** 자동차 모델 이름 (문자열, 최대 100자)
+*   **brand:** 자동차 브랜드 (문자열, 최대 50자, 인덱스 설정 가능)
+*   **car\_type:** 자동차 종류 (문자열, 최대 50자)
+*   **fuel\_type:** 연료 종류 (문자열, 최대 100자)
+*   **release\_date:** 출시일 (문자열, 최대 20자)
+*   **price:** 가격 (정수)
+*   **image\_url:** 이미지 URL (긴 문자열)
+*   **detail\_url:** 상세 정보 URL (긴 문자열)
+
+**이 정보를 바탕으로 할 수 있는 것들:**
+
+*   **데이터베이스 테이블 생성:** 이 스키마를 사용하여 실제 데이터베이스 테이블을 만들 수 있습니다.
+*   **데이터 삽입/조회/수정/삭제:** 테이블이 생성되면 이 구조에 맞춰 자동차 모델 데이터를 삽입, 조회, 수정, 삭제할 수 있습니다.
+*   **데이터 분석:** 저장된 데이터를 기반으로 자동차 모델의 트렌드, 가격 분포, 브랜드별 모델 수 등을 분석할 수 있습니다.
+*   **웹/앱 개발:** 이 데이터를 웹사이트나 앱에 표시하여 사용자에게 자동차 모델 정보를 제공할 수 있습니다.
+
+**질문이 있다면 더 구체적으로 해주세요. 예를 들어:**
+
+*   "이 테이블에서 특정 브랜드의 자동차 모델을 어떻게 찾을 수 있나요?"
+*   "이 테이블에 새로운 자동차 모델 데이터를 어떻게 추가할 수 있나요?"
+*   "이 테이블의 'brand' 필드에 인덱스를 설정하는 이유는 무엇인가요?"
+
+이러한 질문에 답을 드릴 수 있습니다.
+
+2025-05-08 15:52:10,193 - INFO - User input: 내 DB에서 가장 싼 자동차는 뭐야?
+2025-05-08 15:52:10,193 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:52:11,091 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:52:11,095 - INFO - AFC remote call 1 is done.
+2025-05-08 15:52:11,095 - INFO - Function call: id=None args={'sql': 'SELECT * FROM cars ORDER BY price ASC LIMIT 1;'} name='mysql_query'
+2025-05-08 15:52:11,115 - INFO - Tool output: [
+  {
+    "model_id": 3487,
+    "name": "동풍 C31",
+    "brand": "동풍",
+    "car_type": "소형트럭",
+    "fuel_type": null,
+    "release_date": "2017.05.",
+    "price": 1250,
+    "image_url": "https://autoimg.danawa.com/photo/3487/model_200.png",
+    "detail_url": "https://auto.danawa.com/newcar/?Work=estimate&Brand=617&Model=3487"
+  }
+]
+2025-05-08 15:52:11,115 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:52:11,899 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:52:11,907 - INFO - AFC remote call 1 is done.
+2025-05-08 15:52:11,907 - INFO - Final response: 알려드릴 정보가 무엇인지 명확하게 말씀해주시면 답변해 드리겠습니다. 
+
+예를 들어, "스키마 정보에서 'brand' 필드의 데이터 타입은 무엇인가요?" 와 같이 구체적인 질문을 해주세요.
+
+2025-05-08 15:52:26,706 - INFO - User input: 내 DB에서 가장 비싼 자동차는 뭐야?
+2025-05-08 15:52:26,706 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:52:27,461 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:52:27,461 - INFO - AFC remote call 1 is done.
+2025-05-08 15:52:27,461 - INFO - Function call: id=None args={'sql': 'SELECT * FROM cars ORDER BY price DESC LIMIT 1;'} name='mysql_query'
+2025-05-08 15:52:27,476 - INFO - Tool output: [
+  {
+    "model_id": 3807,
+    "name": "코닉세그 Jesko",
+    "brand": "코닉세그",
+    "car_type": "스포츠카",
+    "fuel_type": "가솔린",
+    "release_date": "2019.10.",
+    "price": 450000,
+    "image_url": "https://autoimg.danawa.com/photo/3807/model_200.png",
+    "detail_url": "https://auto.danawa.com/newcar/?Work=estimate&Brand=468&Model=3807"
+  }
+]
+2025-05-08 15:52:27,476 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 15:52:28,138 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 15:52:28,140 - INFO - AFC remote call 1 is done.
+2025-05-08 15:52:28,140 - INFO - Final response: 어떤 질문에 대한 답변을 원하시나요? 이전 대화에서 특정 질문을 하셨다면, 해당 질문을 다시 알려주시면 답변해 드리겠습니다.
+
+2025-05-08 16:08:37,249 - INFO - User input: 내 DB에서 가장 비싼 자동차는 뭐야?
+2025-05-08 16:08:37,249 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 16:08:38,071 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 16:08:38,071 - INFO - AFC remote call 1 is done.
+2025-05-08 16:08:38,071 - INFO - Function call: id=None args={'sql': 'SELECT * FROM cars ORDER BY price DESC LIMIT 1;'} name='mysql_query'
+2025-05-08 16:08:38,071 - INFO - Tool output: [
+  {
+    "model_id": 3807,
+    "name": "코닉세그 Jesko",
+    "brand": "코닉세그",
+    "car_type": "스포츠카",
+    "fuel_type": "가솔린",
+    "release_date": "2019.10.",
+    "price": 450000,
+    "image_url": "https://autoimg.danawa.com/photo/3807/model_200.png",
+    "detail_url": "https://auto.danawa.com/newcar/?Work=estimate&Brand=468&Model=3807"
+  }
+]
+2025-05-08 16:08:38,071 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 16:08:38,848 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 16:08:38,848 - INFO - AFC remote call 1 is done.
+2025-05-08 16:08:38,848 - INFO - Final response: 어떤 질문에 대한 답변을 원하시나요? 이전 대화에서 특정 질문이 없었습니다. 만약 특정 데이터에 대한 질문이 있다면, 질문을 명확하게 해주시면 답변해 드리겠습니다.
+
