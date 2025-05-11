@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 import asyncio
 import pymysql
@@ -95,12 +96,13 @@ class ChatCore(QObject):
                     )
 
             print(f"Gemini:{response.text}")
+            # self.update_message_signal.emit(f"Response: {markdown_to_html(response.text)}")
             self.update_message_signal.emit(f"Response: {response.text}")
 
         except Exception as e:
             print("🔥 Gemini 처리 중 에러 발생:", e)
             self.update_message_signal.emit(f"🔥 Gemini 처리 중 에러 발생: {e}")
-
+            self.handle_query(f"🔥 Gemini 처리 중 에러 발생: {e}")
 
 
 # PyQt 관련 UI 클래스 (pyQT_bot.py)
@@ -263,13 +265,16 @@ class MyWindow(QMainWindow):
 
     # 출력
     def update_output_text(self, message):
-        self.ui.Output_text.append(message)
+        # html = markdown_to_html(message)
+        self.ui.Output_text.setHtml(message)
 
     ## 2-2. 연결 해제 ##
     def disconnect_database(self):
         # 스레드 종료 코드 (예: worker 종료)
         if hasattr(self, 'worker'):
             self.worker.stop()  # 스레드 종료 요청
+            # self.worker.terminate()  # worker 스레드를 종료
+            # self.worker.join()  # 스레드가 종료될 때까지 기다리기
 
         # 연결 끊기 후 처리 (필요에 따라)
         self.update_output_text("연결이 종료되었습니다.")
@@ -287,7 +292,7 @@ class MyWindow(QMainWindow):
         self.ui.Output_text.append(f"Query: {user_query}")
         if hasattr(self, 'worker'):
             self.worker.send_query_signal.emit(user_query)
-        self.ui.Input_edit.setText("")
+        self.ui.Input_edit.setText("")  # 이게 핵심이다, 브로
 
     def run_query(self, query):
         client, server_params = self.build_server_params()
@@ -302,8 +307,6 @@ class MyWindow(QMainWindow):
     def update_output_text(self, message):
         # 결과 메시지를 Output_text에 출력
         self.ui.Output_text.append(message)
-
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
