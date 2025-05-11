@@ -66,14 +66,22 @@ class ChatCore(QObject):
                 ),
             )
 
-            # Gemini가 함수 호출을 요구하는지 확인
-            for part in response.candidates[0].content.parts:
+            # candidates[0] 안의 content가 리스트일 수도 있음
+            content = response.candidates[0].content
+            if isinstance(content, list):
+                parts = content
+            else:
+                parts = content.parts if hasattr(content, "parts") else []
+
+            for part in parts:
                 if hasattr(part, "function_call"):
                     fn = part.function_call
                     if fn is None:
                         continue
                     tool_result = await self.session.call_tool(fn.name, fn.args)
-                    text_result = tool_result.content[0].text if isinstance(tool_result.content, list) else tool_result.content
+                    text_result = (
+                        tool_result.content[0].text if isinstance(tool_result.content, list) else tool_result.content
+                    )
 
                     self.history.append(Content(role="model", parts=[Part(text=text_result)]))
                     self.history.append(Content(role="user", parts=[Part(text="자연어로 답을 설명해줘.")]))
@@ -86,12 +94,12 @@ class ChatCore(QObject):
                         ),
                     )
 
+            print(f"Gemini:{response.text}")
+            self.update_message_signal.emit(f"Response: {response.text}")
+
         except Exception as e:
             print("🔥 Gemini 처리 중 에러 발생:", e)
-            self.update_message_signal.emit("🔥 Gemini 처리 중 에러 발생:", e)
-
-        print(f"Gemini:{response.text}")
-        self.update_message_signal.emit(f"Response: {response.text}")
+            self.update_message_signal.emit(f"🔥 Gemini 처리 중 에러 발생: {e}")
 
 
 
@@ -134,7 +142,6 @@ class WorkerThread(QThread):
                 while True:
                     query = await self.query_queue.get()
                     await self.chat.handle_query(query)
-
 
 
 
@@ -210,10 +217,6 @@ class MyWindow(QMainWindow):
         load_dotenv(dotenv_path)
 
         # 입력한 내용을 토대로
-        # host = self.HOST_edit.text().strip()
-        # port = self.PORT_edit.text().strip()
-        # user = self.USER_edit.text().strip()
-        # password = self.PASS_edit.text().strip()
         database = self.ui.DB_combo.currentText()
 
         # 환경정보에서 Gemini api key를 불러옴.
@@ -236,9 +239,9 @@ class MyWindow(QMainWindow):
             "MYSQL_USER": self.user,
             "MYSQL_PASS": self.pw,
             "MYSQL_DB": database,
-            "ALLOW_INSERT_OPERATION": "True",
-            "ALLOW_UPDATE_OPERATION": "True",
-            "ALLOW_DELETE_OPERATION": "True",
+            "ALLOW_INSERT_OPERATION": "true",
+            "ALLOW_UPDATE_OPERATION": "true",
+            "ALLOW_DELETE_OPERATION": "true",
             "DEBUG": "true"
         }
 
@@ -267,8 +270,6 @@ class MyWindow(QMainWindow):
         # 스레드 종료 코드 (예: worker 종료)
         if hasattr(self, 'worker'):
             self.worker.stop()  # 스레드 종료 요청
-            # self.worker.terminate()  # worker 스레드를 종료
-            # self.worker.join()  # 스레드가 종료될 때까지 기다리기
 
         # 연결 끊기 후 처리 (필요에 따라)
         self.update_output_text("연결이 종료되었습니다.")
@@ -286,7 +287,7 @@ class MyWindow(QMainWindow):
         self.ui.Output_text.append(f"Query: {user_query}")
         if hasattr(self, 'worker'):
             self.worker.send_query_signal.emit(user_query)
-        self.ui.Input_edit.setText("")  # 이게 핵심이다, 브로
+        self.ui.Input_edit.setText("")
 
     def run_query(self, query):
         client, server_params = self.build_server_params()
