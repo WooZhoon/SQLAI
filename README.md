@@ -4,7 +4,9 @@ MySQL Manager with Gemini api
 
 This is a MySQL Manager utilizing the Gemini API. The GUI was built using PyQt5, and it was developed with prompts written in Korean. 
 
-Although it's called a MySQL Manager, the problem is that it currently only supports queries. I'll fix this soon.
+~Although it's called a MySQL Manager, the problem is that it currently only supports queries. I'll fix this soon.~
+
+[250511] Problem fixed. Let's be careful with uppercase and lowercase letters.
 
 ## 🔬References
 - 🔗 [MySQL MCP Server](https://github.com/benborla/mcp-server-mysql)
