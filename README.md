@@ -33,7 +33,7 @@ pip install -r requirements.txt
 Additionally, a Gemini API key is required.
 You can obtain one from the link following: 🔗 https://aistudio.google.com/apikey
 
-*"Note: `Node.js` and `npx` might be required, depending on your setup🔥"*
+*"Note: `Node.js` and `npx` must be required🔥"*
 
 
 ## 🪄 How to Use
