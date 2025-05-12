@@ -15,6 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(523, 414)
+        MainWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -164,7 +165,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "SQLAI"))
         self.label_HOST.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">HOST</span></p></body></html>"))
         self.label_PASS.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">PASS</span></p></body></html>"))
         self.USER_edit.setText(_translate("MainWindow", "root"))
