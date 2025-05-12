@@ -16,27 +16,43 @@ This is a MySQL Manager utilizing the Gemini API. The GUI was built using PyQt5,
 
 I referred heavily to the references above. Thank you so much!
 
+---
+
 ## 💾 Requirements
-- `python==3.12.3`  
-- `PyQt5==5.15.11`  
-- `pymysql==1.1.1`  
-- `google-genai==1.12.1`  
-- `python-dotenv==1.1.0`  
-The above packages are also listed in the `requirements.txt` file.  
-To install them, run the following command:
+### ✅ Python Environment
+- `python==3.12.3`
+
+`pip` must be up-to-date:
+```bash
+python -m pip install --upgrade pip
+```
+
+### ✅ Python Dependencies
+  All required packages are listed in `requirements.txt`. Install with:
   ```bash
   pip install -r requirements.txt
   ```
+  Packages included:
+  - `PyQt5==5.15.11` — GUI framework
+  - `pymysql==1.1.1` — MySQL connector
+  - `google-genai==1.12.1` — Gemini API
+  - `python-dotenv==1.1.0` — Load .env configs
 
-- `Gemini API key`
+### 🔐 Gemini API key
+  This app uses Gemini via Google's google-generativeai package.
+  
+  Get your API key from the link following: 🔗 https://aistudio.google.com/apikey
 
-  Additionally, a Gemini API key is required.
-  You can obtain one from the link following: 🔗 https://aistudio.google.com/apikey
-
-- `Node.js v18 or higher`
-
-  *"Note: `Node.js` and `npx` must be required🔥"* 🔗 https://nodejs.org
-
+### ⚙️ Node.js Runtime (Required)
+  The app relies on Node.js for running the MCP-Gemini bridge (for natural language to SQL translation).
+  - Required: Node.js `v18` or higher
+  - npx must be available
+  Install from: 🔗 https://nodejs.org
+  Verify installation:
+  ```bash
+  node -v   # should be >= v18
+  npx -v    # should return a version
+  ```
 
 ## 🪄 How to Use
 
