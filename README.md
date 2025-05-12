@@ -17,23 +17,25 @@ This is a MySQL Manager utilizing the Gemini API. The GUI was built using PyQt5,
 I referred heavily to the references above. Thank you so much!
 
 ## 💾 Requirements
-
 - `python==3.12.3`  
 - `PyQt5==5.15.11`  
 - `pymysql==1.1.1`  
 - `google-genai==1.12.1`  
 - `python-dotenv==1.1.0`  
-
 The above packages are also listed in the `requirements.txt` file.  
 To install them, run the following command:
+  ```bash
+  pip install -r requirements.txt
+  ```
 
-```bash
-pip install -r requirements.txt
-```
-Additionally, a Gemini API key is required.
-You can obtain one from the link following: 🔗 https://aistudio.google.com/apikey
+- `Gemini API key`
 
-*"Note: `Node.js` and `npx` must be required🔥"*
+  Additionally, a Gemini API key is required.
+  You can obtain one from the link following: 🔗 https://aistudio.google.com/apikey
+
+- `Node.js v18 or higher`
+
+  *"Note: `Node.js` and `npx` must be required🔥"* 🔗 https://nodejs.org
 
 
 ## 🪄 How to Use
