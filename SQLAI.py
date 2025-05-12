@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+import shutil
 import asyncio
 import pymysql
 
@@ -22,6 +23,8 @@ system_prompt: str = """
     너의 임무는 사용할 수 있는 도구들을 이용해 SQL 쿼리를 실행하고, 그 결과를 사용자에게 전달하는 것이다.
     [MCP 규칙] MCP 도구가 제공되면, 쿼리를 설명하지 말고 즉시 function_call을 호출해라.
     """
+
+dotenv_path = ".env"
 
 # 대화 처리 관련 클래스 (chat_core.py)
 class ChatCore(QObject):
@@ -165,6 +168,13 @@ class MyWindow(QMainWindow):
         self.port = self.ui.PORT_edit.text().strip()
         self.user = self.ui.USER_edit.text().strip()
         self.pw = self.ui.PASS_edit.text().strip()
+        
+        # 환경 정보를 불러옴
+        load_dotenv(dotenv_path)
+        set_key(dotenv_path, "HOST", self.host)
+        set_key(dotenv_path, "PORT", self.port)
+        set_key(dotenv_path, "USER", self.user)
+        set_key(dotenv_path, "PASS", self.pw)
 
         try:
             port = int(self.port)
@@ -214,8 +224,12 @@ class MyWindow(QMainWindow):
 
     ## 2-1-1. 환경 변수 설정 ##
     def build_server_params(self):
+        
+        if not check_node_and_npx():
+            QMessageBox.critical(self, "환경 오류", "Node.js 또는 npx가 설치되어 있지 않습니다.\nhttps://nodejs.org 에서 설치해주세요.")
+            return None, None
+        
         # 환경 정보를 불러옴
-        dotenv_path = ".env"
         load_dotenv(dotenv_path)
 
         # 입력한 내용을 토대로
@@ -228,11 +242,18 @@ class MyWindow(QMainWindow):
         if not gemini_key:
             key, ok = QInputDialog.getText(self, "Gemini API Key 입력", "Gemini API Key가 없습니다.\n입력해주세요:")
             if ok and key:
-                set_key(dotenv_path, "GEMINI_API_KEY", key.strip())
                 gemini_key = key.strip()
+                set_key(dotenv_path, "GEMINI_API_KEY", gemini_key)
             else:
                 QMessageBox.critical(self, "Key Missing", "Gemini API Key가 입력되지 않았습니다.")
                 return None
+
+            # ✅ 예외처리 추가!
+        try:
+            client = genai.Client(api_key=gemini_key)
+        except Exception as e:
+            QMessageBox.critical(self, "Gemini Init Error", f"Gemini Client 생성 실패:\n{e}")
+            return None, None
 
         # 환경 정보를 이용해 MCP server params를 생성성
         env = {
@@ -246,9 +267,6 @@ class MyWindow(QMainWindow):
             "ALLOW_DELETE_OPERATION": "true",
             "DEBUG": "true"
         }
-
-        #
-        client = genai.Client(api_key=gemini_key)
 
         self.ui.Output_text.append("🔥 MCP 환경 변수 준비 완료.")
         # self.Conn_push.setEnabled(False)
@@ -307,6 +325,11 @@ class MyWindow(QMainWindow):
     def update_output_text(self, message):
         # 결과 메시지를 Output_text에 출력
         self.ui.Output_text.append(message)
+
+def check_node_and_npx():
+    node_exists = shutil.which("node") is not None
+    npx_exists = shutil.which("npx") is not None
+    return node_exists and npx_exists
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
